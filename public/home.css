@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-@import url('https://cdn.jsdelivrr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
-body {
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: "Poppins", sans-serif;
     display: flex;
     flex-direction: column;
@@ -11,7 +16,7 @@ body {
     min-height: 100vh;
     background: url('coverimage.jpeg') no-repeat center center/cover;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* Background Overlay */
@@ -39,14 +44,14 @@ body::before {
     background: rgba(0, 0, 0, 0.6);
     color: white;
     backdrop-filter: blur(10px);
-    flex-wrap: wrap;
+    z-index: 100;
 }
 
 .nav-buttons {
     display: flex;
     gap: 18px;
-    margin-right: 45px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .nav-buttons button {
@@ -59,8 +64,10 @@ body::before {
     color: black;
     position: relative;
     overflow: hidden;
+    white-space: nowrap;
 }
 
+/* Intro Video */
 #introVideoContainer {
     position: fixed;
     top: 0;
@@ -73,7 +80,7 @@ body::before {
     justify-content: center;
     align-items: center;
     opacity: 1;
-    transition: opacity 1.5s ease-in-out; /* Smooth fade transition */
+    transition: opacity 1.5s ease-in-out;
 }
 
 #introVideo {
@@ -84,12 +91,8 @@ body::before {
 
 #introVideoContainer.fade-out {
     opacity: 0;
-    pointer-events: none; /* Disable interaction during the transition */
+    pointer-events: none;
 }
-
-
-
-
 
 /* Logo Animation */
 #logop {
@@ -150,7 +153,9 @@ body::before {
 /* Title Animations */
 .main-content {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 100px;
+    padding: 20px;
+    width: 100%;
 }
 
 .title {
@@ -203,6 +208,7 @@ body::before {
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 /* Donate Buttons */
@@ -212,6 +218,7 @@ body::before {
     gap: 20px;
     margin-top: 20px;
     flex-wrap: wrap;
+    padding: 0 20px;
 }
 
 .btn {
@@ -226,10 +233,6 @@ body::before {
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
     background: #F57F17;
     display: inline-block;
-}
-
-.buttons-act {
-    display: none;
 }
 
 .donor-btn {
@@ -259,7 +262,8 @@ body::before {
     transform: translate(-50%, -50%) scale(0);
     background: #FFF8E1;
     padding: 2rem;
-    width: 350px;
+    width: 90%;
+    max-width: 350px;
     border-radius: 12px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -326,9 +330,10 @@ body::before {
     flex-direction: column;
     align-items: center;
 }
+
 .about-person a {
     margin-top: 16px;
-    color:black; /* Adjust the value as needed */
+    color: black;
 }
 
 .about-img {
@@ -340,7 +345,8 @@ body::before {
 }
 
 #aboutPopup {
-    width: 450px;
+    width: 90%;
+    max-width: 450px;
 }
 
 /* Footer */
@@ -357,31 +363,218 @@ body::before {
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+    
+    .nav-buttons {
+        gap: 12px;
+    }
+    
+    .nav-buttons button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    .title {
+        font-size: 32px;
+    }
+    
+    #logop {
+        width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
     .navbar {
         flex-direction: column;
-        align-items: center;
+        padding: 0.8rem 1rem;
+        gap: 15px;
     }
-
+    
     .nav-buttons {
-        margin-top: 10px;
+        gap: 10px;
+        margin-right: 0;
     }
-
+    
+    .nav-buttons button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .main-content {
+        margin-top: 150px;
+        padding: 15px;
+    }
+    
     .title {
-        font-size: 2rem;
+        font-size: 28px;
+        gap: 8px;
     }
-
-    #aboutPopup {
-        width: 90%;
+    
+    #logop {
+        width: 130px;
     }
-
+    
+    .btn {
+        padding: 0.9rem 1.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .btn-container {
+        gap: 15px;
+    }
+    
     .footer {
+        font-size: 0.85em;
         padding: 8px;
-        font-size: 0.8em;
     }
+    
+    .popup {
+        padding: 1.5rem;
+    }
+}
 
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0.7rem;
+    }
+    
+    .nav-buttons {
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .nav-buttons button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .main-content {
+        margin-top: 180px;
+    }
+    
+    .title {
+        font-size: 24px;
+        gap: 6px;
+    }
+    
+    #logop {
+        width: 120px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+    }
+    
     .btn-container {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
+    }
+    
+    .buttons-act {
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    .buttons-act .btn {
+        width: 100%;
+    }
+    
+    .about-img {
+        max-width: 120px;
+    }
+    
+    .popup {
+        padding: 1.2rem;
+        max-width: 320px;
+    }
+    
+    .popup input {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.6rem;
+    }
+    
+    .nav-buttons button {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.8rem;
+    }
+    
+    .main-content {
+        margin-top: 200px;
+        padding: 10px;
+    }
+    
+    .title {
+        font-size: 20px;
+        gap: 5px;
+    }
+    
+    .title span {
+        padding: 3px;
+    }
+    
+    #logop {
+        width: 100px;
+    }
+    
+    .btn {
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+    }
+    
+    .footer {
+        font-size: 0.75em;
+        padding: 6px;
+    }
+    
+    .popup {
+        padding: 1rem;
+        max-width: 280px;
+    }
+    
+    .popup input {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .popup button {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    .about-img {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 360px) {
+    .title {
+        font-size: 18px;
+    }
+    
+    .nav-buttons button {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+    
+    #logop {
+        width: 90px;
+    }
+    
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.9rem;
     }
 }
